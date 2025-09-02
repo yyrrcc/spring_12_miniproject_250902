@@ -5,10 +5,21 @@
 
 <div class="map-container">
     <h2>오시는 길</h2>
+
+    <!-- 안내문 -->
+    <div class="map-info">
+        <h3>찾아오시는 방법</h3>
+        <ul>
+            <li>🚶‍♂️ 도보: 지하철 ○○역 2번 출구에서 직진 후 도보 5분</li>
+            <li>🚇 지하철: ○○역 (2호선, 3호선) 하차 후 도보 5분</li>
+            <li>🚌 버스: ○○정류장에서 하차 (간선 123, 456번 / 지선 789번)</li>
+            <li>🚗 자가용: ○○주차장 이용 가능 (30분 무료)</li>
+        </ul>
+    </div>    
     
     <!-- 지도 자리 -->
     <div class="map-box">
-    	<div id="map" style="width:700px; height:400px;"></div>
+    	<div id="map" style="width: 700px; height: 400px;"></div>
     </div>
 </div>
 

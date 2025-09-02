@@ -16,4 +16,8 @@ public class BoardDto {
 	private String content;      // 내용
 	private int hit;             // 조회수
 	private Timestamp regDate;    // 작성일
+	
+	private MemberDto memberDto; // MemberDto를 변수로 받기
+	private int rnum; // sql rownum 추가
+	
 }

@@ -40,6 +40,34 @@
             <a href="boardDelete.do?boardId=${board.boardId}" class="btn cancel">삭제</a>
         </c:if>
     </div>
+    
+    
+    
+    <!-- 댓글 영역 -->
+    <div class="comment-section">
+        <h3>댓글</h3>
+
+        <!-- 댓글 작성 -->
+        <form action="commentAdd" method="post">
+            <input type="hidden" name="boardNum" value="1">
+            <input type="text" name="writer" placeholder="작성자" required>
+            <textarea name="content" placeholder="댓글 내용을 입력하세요" required></textarea>
+            <button type="submit" class="btn">등록</button>
+        </form>
+
+        <!-- 댓글 리스트 -->
+        <div class="comment-list">
+            <div class="comment-item">
+                <p><strong>김철수</strong> : 좋은 글 잘 봤습니다!</p>
+                <span class="comment-date">2025-09-02</span>
+            </div>
+            <div class="comment-item">
+                <p><strong>이영희</strong> : 동의합니다!</p>
+                <span class="comment-date">2025-09-02</span>
+            </div>
+        </div>
+    </div>    
+    
 </div>
 
 <%@ include file="../common/footer.jsp" %>
