@@ -5,5 +5,13 @@
 
 <mapper namespace="com.mycompany.mini.dao.MemberDao">
 
-
+	<!-- 회원가입 -->
+	<insert id="memSignUp">
+		INSERT INTO minimember (memberid, password, name, phone, email) VALUES (#{memberId}, #{password}, #{name}, #{phone}, #{email})
+	</insert>
+	
+	<!-- 로그인 -->
+	<select id="memLogin" resultType="int">
+		SELECT count(*) FROM minimember WHERE memberid = #{param1} AND password = #{param2}
+	</select>
 </mapper>

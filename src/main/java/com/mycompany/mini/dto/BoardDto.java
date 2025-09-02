@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BoardDto {
-	private int boardId;         // 글 번호
+	private int bnum;         // 글 번호
 	private String memberId;     // 작성자 ID (FK)
 	private String title;        // 제목
 	private String content;      // 내용

@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>GPT Cafe</title>
+    <title>Coding Cafe</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">
 </head>
 <body>
 <header>
-    <div class="logo">☕ GPT Cafe</div>
+    <div class="logo">☕ Coding Cafe</div>
 </header>

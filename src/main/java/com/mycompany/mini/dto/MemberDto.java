@@ -16,5 +16,13 @@ public class MemberDto {
 	private String phone;      // 전화번호
 	private String email;      // 이메일
 	private Timestamp regDate;    // 가입일 (문자열로 받거나 java.sql.Date 사용 가능)
-
+	
+	public MemberDto(String memberId, String password, String name, String phone, String email) {
+		super();
+		this.memberId = memberId;
+		this.password = password;
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+	}
 }

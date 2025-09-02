@@ -9,11 +9,18 @@ header {
     background: #6b4226;
     color: white;
     padding: 15px;
+    height: 50px;
     text-align: center;
 }
+header .logo {
+	font-size: 30px;
+}
 nav ul {
+	height: 40px;
     list-style: none;
-    margin: 0; padding: 0;
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
     display: flex;
     justify-content: center;
     background: #d7ccc8;

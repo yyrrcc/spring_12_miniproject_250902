@@ -6,8 +6,8 @@
 <div class="form-container">
     <h2>회원가입</h2>
     <form action="signupSuccess" method="post">
-        <input type="text" name="id" placeholder="아이디" required>
-        <input type="password" name="pw" placeholder="비밀번호" required>
+        <input type="text" name="memberId" placeholder="아이디" required>
+        <input type="password" name="password" placeholder="비밀번호" required>
         <input type="text" name="name" placeholder="이름" required>
         <input type="text" name="phone" placeholder="휴대전화">
         <input type="email" name="email" placeholder="이메일">

@@ -1,25 +1,161 @@
 @charset "UTF-8";
-.list-container, .form-container {
-    width: 600px;
+.list-container {
+    width: 80%;
     margin: 40px auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
+    background: #fffaf0;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.list-container h2 {
+    text-align: center;
+    color: #6b4226;
+    margin-bottom: 20px;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
+    text-align: center;
 }
+
 th, td {
-    border: 1px solid #999;
-    padding: 8px;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
 }
+
+th {
+    background-color: #d7ccc8;
+    color: #333;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #f5e6d3;
+}
+
 .btn {
     display: inline-block;
-    padding: 8px 15px;
-    margin-top: 10px;
+    padding: 10px 18px;
+    margin-top: 15px;
     background: #6b4226;
     color: white;
+    border-radius: 8px;
     text-decoration: none;
-    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
 }
+
+.btn:hover {
+    background: #8d5b3c;
+}
+
+
+/* 글쓰기 */
+.form-container {
+    width: 600px;
+    margin: 50px auto;
+    background: #fffaf0;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.form-container h2 {
+    text-align: center;
+    color: #6b4226;
+    margin-bottom: 25px;
+}
+
+.form-container label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #5a3e2b;
+}
+
+.form-container input[type="text"],
+.form-container textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.form-container .form-btns {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.form-container .btn {
+    padding: 10px 25px;
+    margin: 0 10px;
+}
+
+.form-container .btn.cancel {
+    background: #999;
+}
+
+.form-container .btn.cancel:hover {
+    background: #666;
+}
+
+/* 글 보기 */
+.detail-container {
+    width: 600px;
+    margin: 50px auto;
+    background: #fffaf0;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.detail-container h2 {
+    text-align: center;
+    color: #6b4226;
+    margin-bottom: 25px;
+}
+
+.detail-item {
+    margin-bottom: 20px;
+}
+
+.detail-item label {
+    font-weight: bold;
+    color: #5a3e2b;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.detail-item p {
+    background: #fff5e6;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.detail-btns {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.detail-btns .btn {
+    padding: 10px 25px;
+    margin: 0 10px;
+}
+
+.detail-btns .btn.cancel {
+    background: #999;
+}
+
+.detail-btns .btn.cancel:hover {
+    background: #666;
+}
+
+
