@@ -7,8 +7,8 @@
     <h2>오시는 길</h2>
 
     <!-- 안내문 -->
-    <div class="map-info">
-        <h3>찾아오시는 방법</h3>
+    <div class="directions">
+        <h4>찾아오시는 방법</h4>
         <ul>
             <li>🚶‍♂️ 도보: 지하철 ○○역 2번 출구에서 직진 후 도보 5분</li>
             <li>🚇 지하철: ○○역 (2호선, 3호선) 하차 후 도보 5분</li>
@@ -31,10 +31,7 @@
 			center: new kakao.maps.LatLng(37.556485736141845, 126.94518938389395), // 위도, 경도
 			level: 3
 		};
-
 		var map = new kakao.maps.Map(container, options);
-		
-		
 		
 		//주소-좌표 변환 객체 생성 (app키에 &libraries=services 추가)
 	    var geocoder = new kakao.maps.services.Geocoder();
@@ -62,8 +59,6 @@
 		        }
 		    });
 	</script>
-
-
 
 
 

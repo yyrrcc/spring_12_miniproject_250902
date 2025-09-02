@@ -3,12 +3,19 @@
 <%@ include file="../common/nav.jsp" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/reservation.css">
 
-<div class="list-container">
-    <h2>내 예약 내역</h2>
+<div class="reservation-list">
+    <h3>예약 목록</h3>
     <table>
-        <tr><th>날짜</th><th>시간</th><th>인원</th></tr>
-        <!-- 예약 내역 반복문 -->
-        <tr><td>2025-09-02</td><td>14:00</td><td>2명</td></tr>
+        <tr><th>예약번호</th><th>이름</th><th>날짜</th><th>시간</th><th>예약하기</th></tr>
+        <c:forEach var="r" items="${reservList}">
+            <tr>
+                <td>${r.resId}</td>
+                <td>${r.name}</td>
+                <td>${r.date}</td>
+                <td>${r.time}</td>
+                <td><button class="btn btn-primary">예약하기</button></td>
+            </tr>
+        </c:forEach>
     </table>
 </div>
 

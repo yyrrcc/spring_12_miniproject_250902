@@ -72,5 +72,13 @@ public class BoardController {
 		model.addAttribute("boardDto", boardDto);
 		return "board/boardDetail";
 	}
+	// 글 삭제
+	@RequestMapping (value = "/board/boardDelete")
+	public String boardDelete(HttpServletRequest request, Model model) {
+		String bnum = request.getParameter("bnum");
+		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
+		boardDao.boardDelete(bnum);
+		return "redirect:/board/boardList";
+	}
 	
 }

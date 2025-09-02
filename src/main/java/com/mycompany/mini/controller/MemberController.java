@@ -40,7 +40,7 @@ public class MemberController {
 	public String login(HttpServletRequest request, Model model) {
 		return "member/login";
 	}
-	@RequestMapping (value = "/loginSuccess")
+	@RequestMapping (value = "/member/loginSuccess")
 	public String loginSuccess(HttpServletRequest request, Model model, HttpSession session) {
 		String memberId = request.getParameter("memberId");
 		String password = request.getParameter("password");
@@ -53,5 +53,18 @@ public class MemberController {
 		} else {
 			return "index";
 		}
+	}
+	// 마이페이지 수정
+	@RequestMapping (value = "/member/memberInfo")
+	public String memberInfo(HttpServletRequest request, Model model, HttpSession session) {
+		// 마이페이지 정보 확인, 수정, 탈퇴 버튼
+		return "index";
+	}
+	// 로그아웃
+	@RequestMapping (value = "/signout")
+	public String signout(HttpServletRequest request, Model model, HttpSession session) {
+		session.getAttribute("sessionId");
+		session.invalidate();
+		return "redirect:index";
 	}
 }

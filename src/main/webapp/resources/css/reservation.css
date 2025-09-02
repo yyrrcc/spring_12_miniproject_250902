@@ -1,17 +1,31 @@
 @charset "UTF-8";
-.form-container, .list-container {
+.reservation-list, .reservation-form {
     width: 500px;
     margin: 40px auto;
     background: #fffaf0;
     padding: 20px;
     border-radius: 8px;
 }
-table {
+
+
+/* 예약 */
+.reservation-list table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 20px;
 }
-table, th, td {
-    border: 1px solid #999;
-    padding: 8px;
+
+.reservation-list th, .reservation-list td {
+    border: 1px solid #ddd;
+    padding: 10px;
     text-align: center;
 }
+
+.reservation-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+

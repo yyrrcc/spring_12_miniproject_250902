@@ -54,5 +54,10 @@
 	<update id="updateHit">
 		UPDATE miniboard SET hit = hit + 1 WHERE bnum = #{param1}
 	</update>
+	
+	<!-- 글 삭제하기 -->
+	<delete id="boardDelete">
+		DELETE FROM miniboard WHERE bnum = #{param1}
+	</delete>	
 
 </mapper>

@@ -18,5 +18,7 @@ public interface BoardDao {
 	public BoardDto boardDetail(String bnum);
 	// 조회수
 	public void updateHit(String bnum);
+	// 글 삭제하기
+	public void boardDelete(String bnum);
 
 }
