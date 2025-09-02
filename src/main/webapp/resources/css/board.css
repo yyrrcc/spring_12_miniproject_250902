@@ -1,0 +1,25 @@
+@charset "UTF-8";
+.list-container, .form-container {
+    width: 600px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #999;
+    padding: 8px;
+}
+.btn {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-top: 10px;
+    background: #6b4226;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}

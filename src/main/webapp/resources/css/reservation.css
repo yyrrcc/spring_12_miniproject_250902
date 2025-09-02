@@ -1,0 +1,17 @@
+@charset "UTF-8";
+.form-container, .list-container {
+    width: 500px;
+    margin: 40px auto;
+    background: #fffaf0;
+    padding: 20px;
+    border-radius: 8px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid #999;
+    padding: 8px;
+    text-align: center;
+}

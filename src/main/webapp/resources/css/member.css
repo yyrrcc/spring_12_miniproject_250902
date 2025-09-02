@@ -1,0 +1,20 @@
+@charset "UTF-8";
+.form-container {
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fffaf0;
+    border-radius: 8px;
+}
+.form-container input, .form-container button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+}
+button {
+    background: #6b4226;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
