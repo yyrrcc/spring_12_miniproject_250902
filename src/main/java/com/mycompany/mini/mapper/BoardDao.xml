@@ -55,6 +55,11 @@
 		UPDATE miniboard SET hit = hit + 1 WHERE bnum = #{param1}
 	</update>
 	
+	<!-- 글 수정하기 -->
+	<update id="boardEdit" >
+		UPDATE miniboard SET title = #{param2}, content = #{param3} WHERE bnum = #{param1}
+	</update>
+	
 	<!-- 글 삭제하기 -->
 	<delete id="boardDelete">
 		DELETE FROM miniboard WHERE bnum = #{param1}

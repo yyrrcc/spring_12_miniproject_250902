@@ -15,10 +15,12 @@ public interface BoardDao {
 	// 글목록 + 페이징
 	public List<BoardDto> boardList(int startRow, int endRow);
 	// 글 세부사항
-	public BoardDto boardDetail(String bnum);
+	public BoardDto boardDetail(int bnum);
 	// 조회수
-	public void updateHit(String bnum);
+	public void updateHit(int bnum);
+	// 글 수정하기
+	public void boardEdit(int bnum, String title, String content);
 	// 글 삭제하기
-	public void boardDelete(String bnum);
+	public void boardDelete(int bnum);
 
 }

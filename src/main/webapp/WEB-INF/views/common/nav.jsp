@@ -9,7 +9,7 @@
         		<li><a href="${pageContext.request.contextPath}/member/login">로그인</a></li>
         	</c:when>
         	<c:otherwise>
-				<li><a href="${pageContext.request.contextPath}/member/memberInfo">마이페이지</a></li>        	
+				<li><a href="${pageContext.request.contextPath}/member/mypage">마이페이지</a></li>        	
 				<li><a href="${pageContext.request.contextPath}/signout">로그아웃</a></li>
         	</c:otherwise>
         </c:choose>

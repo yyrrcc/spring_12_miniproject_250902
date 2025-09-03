@@ -3,6 +3,7 @@ package com.mycompany.mini.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,13 @@ public class BoardController {
 	}
 	// 글쓰기
 	@RequestMapping (value = "/board/boardWrite")
-	public String boardWrite(HttpServletRequest request, Model model) {
+	public String boardWrite(HttpServletRequest request, Model model, HttpSession session) {
+		String sid = (String) session.getAttribute("sessionId");
+		if (sid == null) {
+			model.addAttribute("msg", "로그인한 회원만 글 작성 가능합니다.");
+			model.addAttribute("url", "boardList");
+			return "alert";
+		}
 		return "board/boardWrite";
 	}
 	@RequestMapping (value = "/board/boardWriteSuccess")
@@ -65,17 +72,38 @@ public class BoardController {
 	// 글 세부사항
 	@RequestMapping (value = "/board/boardDetail")
 	public String boardDetail(HttpServletRequest request, Model model) {
-		String bnum = request.getParameter("bnum");
+		int bnum = Integer.parseInt(request.getParameter("bnum"));
 		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
 		boardDao.updateHit(bnum);
 		BoardDto boardDto = boardDao.boardDetail(bnum);
 		model.addAttribute("boardDto", boardDto);
 		return "board/boardDetail";
 	}
+	// 글 수정
+	@RequestMapping (value = "/board/boardEdit")
+	public String boardEdit(HttpServletRequest request, Model model) {
+		int bnum = Integer.parseInt(request.getParameter("bnum"));
+		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
+		BoardDto boardDto = boardDao.boardDetail(bnum);
+		model.addAttribute("boardDto", boardDto);
+		return "board/boardEdit";
+	}
+	// 글 수정 성공
+	@RequestMapping (value = "/board/boardEditSuccess")
+	public String boardEditSuccess(HttpServletRequest request, Model model) {
+		int bnum = Integer.parseInt(request.getParameter("bnum"));
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
+		boardDao.boardEdit(bnum, title, content);
+		BoardDto boardDto = boardDao.boardDetail(bnum);
+		model.addAttribute("boardDto", boardDto);
+		return "redirect:/board/boardDetail?bnum=" + bnum;
+	}
 	// 글 삭제
 	@RequestMapping (value = "/board/boardDelete")
 	public String boardDelete(HttpServletRequest request, Model model) {
-		String bnum = request.getParameter("bnum");
+		int bnum = Integer.parseInt(request.getParameter("bnum"));
 		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
 		boardDao.boardDelete(bnum);
 		return "redirect:/board/boardList";

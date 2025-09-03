@@ -2,6 +2,8 @@
 <%@ page session="true" %>
 <%@ include file="../common/header.jsp" %>
 <%@ include file="../common/nav.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css">
 
 <div class="detail-container">
@@ -29,13 +31,13 @@
 
     <div class="detail-item">
         <label>작성일</label>
-        <p>${boardDto.regDate}</p>
+        <p><fmt:formatDate value="${boardDto.regDate }" pattern="yyyy-MM-dd HH:mm:ss"/></p>
     </div>
 
     <div class="detail-btns">
         <a href="boardList" class="btn">글목록</a>
-        <c:if test="${sessionScope.sid eq board.writer}">
-            <a href="boardEdit.jsp?boardId=${board.boardId}" class="btn">수정</a>
+        <c:if test="${sessionScope.sessionId == boardDto.memberId}">
+            <a href="boardEdit?bnum=${boardDto.bnum}" class="btn">수정</a>
             <a href="boardDelete?bnum=${boardDto.bnum}" class="btn cancel">삭제</a>
         </c:if>
     </div>

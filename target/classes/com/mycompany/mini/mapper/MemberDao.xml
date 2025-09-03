@@ -14,4 +14,19 @@
 	<select id="memLogin" resultType="int">
 		SELECT count(*) FROM minimember WHERE memberid = #{param1} AND password = #{param2}
 	</select>
+	
+	<!-- 마이페이지 정보 확인 -->
+	<select id="mypage" resultType="com.mycompany.mini.dto.MemberDto">
+		SELECT * FROM minimember WHERE memberid = #{param1}
+	</select>
+	
+	<!-- 마이페이지 정보 수정 -->
+	<update id="mypageEdit">
+		UPDATE minimember SET password = #{password}, name = #{name}, phone = #{phone}, email = #{email} WHERE memberid = #{memberId}
+	</update>
+	
+	<!-- 회원 탈퇴 -->
+	<update id="memDelete">
+		DELETE FROM minimember WHERE memberid = #{param1}
+	</update>
 </mapper>
