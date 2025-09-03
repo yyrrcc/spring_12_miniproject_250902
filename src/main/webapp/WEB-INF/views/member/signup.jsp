@@ -11,6 +11,13 @@
         <input type="text" name="name" placeholder="이름" required>
         <input type="text" name="phone" placeholder="휴대전화">
         <input type="email" name="email" placeholder="이메일">
+        
+        <c:if test="${not empty errorMsgs }">
+	        <c:forEach items="${errorMsgs }" var="msg">
+	        	<p style="color: red">${msg }</p>
+	        </c:forEach>
+        </c:if>
+        
         <button type="submit">가입하기</button>
     </form>
 </div>

@@ -10,6 +10,11 @@
 		INSERT INTO minimember (memberid, password, name, phone, email) VALUES (#{memberId}, #{password}, #{name}, #{phone}, #{email})
 	</insert>
 	
+	<!-- 회원가입 시 아이디 중복 검사 -->
+	<select id="memIdCheck" resultType="int">
+		SELECT count(*) FROM minimember WHERE memberid = #{memberId}
+	</select>
+	
 	<!-- 로그인 -->
 	<select id="memLogin" resultType="int">
 		SELECT count(*) FROM minimember WHERE memberid = #{param1} AND password = #{param2}

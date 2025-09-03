@@ -1,5 +1,8 @@
 package com.mycompany.mini.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -7,16 +10,32 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.mini.dao.BoardDao;
 import com.mycompany.mini.dao.MemberDao;
 import com.mycompany.mini.dto.MemberDto;
+import com.mycompany.mini.validator.MemberValidator;
 
 @Controller
 public class MemberController {
 	@Autowired
-	SqlSession sqlSession;
+	private SqlSession sqlSession;
+	
+	// 유효성 검증
+	@Autowired
+    private MemberValidator memberValidator;
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+		binder.setValidator(memberValidator);
+	}
+	
 	
 	// 회원가입
 	@RequestMapping (value = "/member/signup")
@@ -24,14 +43,26 @@ public class MemberController {
 		return "member/signup";
 	}
 	@RequestMapping (value = "/member/signupSuccess")
-	public String signupSuccess(HttpServletRequest request, Model model) {
-		String memberId = request.getParameter("memberId");
-		String password = request.getParameter("password");
-		String name = request.getParameter("name");
-		String phone = request.getParameter("phone");
-		String email = request.getParameter("email");
-		MemberDto memberDto = new MemberDto(memberId, password, name, phone, email);
+	public String signupSuccess(@ModelAttribute @Validated MemberDto memberDto, BindingResult result, Model model, HttpServletRequest request) {
+//		String memberId = request.getParameter("memberId");
+//		String password = request.getParameter("password");
+//		String name = request.getParameter("name");
+//		String phone = request.getParameter("phone");
+//		String email = request.getParameter("email");
+		
+		if(result.hasErrors()) {
+			List<ObjectError> objectErrors = result.getAllErrors(); // 모든 에러 받기
+			List<String> errorMsgs = new ArrayList<String>(); // 에러 메시지 담는 리스트
+			for (ObjectError objectError : objectErrors) {
+				String errorMsg = objectError.getDefaultMessage(); // 에러 메시지 가져오기
+				errorMsgs.add(errorMsg);
+			}
+			model.addAttribute("errorMsgs", errorMsgs);
+			return "member/signup";
+		}
+		
 		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		//memberDto = new MemberDto(memberId, password, name, phone, email);
 		memberDao.memSignUp(memberDto);
 		return "redirect:/member/login";
 	}
