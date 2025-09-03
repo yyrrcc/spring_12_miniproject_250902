@@ -6,8 +6,8 @@
 <div class="reservation-form">
     <h3>예약하기</h3>
     <form action="resSuccess" method="post">
-        <input type="hidden" name="memberId" value="${sessionScope.sessionId }" readonly>
-        <input type="text" name="name" value="${sessionScope.sessionName }" readonly>
+   		<input type="hidden" name="memberId" value="${sessionScope.sessionId }" readonly>
+       	<input type="text" name="name" value="${sessionScope.sessionName }" readonly>
         <input type="date" name="resDate" required>
         <input type="time" name="resTime" required>
         <input type="number" name="persons" min="1" placeholder="인원 수" required>

@@ -15,7 +15,7 @@
 				<li><a href="${pageContext.request.contextPath}/reservation/reservationList">나의예약</a></li>
         	</c:otherwise>
         </c:choose>
-        <li><a href="${pageContext.request.contextPath}/board/boardList">게시판</a></li>
+        <li><a href="${pageContext.request.contextPath}/board/boardList">자유게시판</a></li>
         <li><a href="${pageContext.request.contextPath}/map/map">오시는 길</a></li>
     </ul>
 </nav>

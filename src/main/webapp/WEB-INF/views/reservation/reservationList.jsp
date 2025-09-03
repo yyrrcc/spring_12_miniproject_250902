@@ -5,6 +5,16 @@
 
 <div class="reservation-list">
     <h3>예약 목록</h3>
+
+    <!-- 예약하기 버튼 -->
+    <div class="reservation-actions">
+        <button type="button" class="btn btn-primary" 
+                onclick="location.href='${pageContext.request.contextPath}/reservation/reservationForm'">
+            예약하기
+        </button>
+    </div>    
+    
+    <br />
     <table>
         <tr>
         	<th>예약번호</th>
@@ -24,6 +34,8 @@
             </tr>
         </c:forEach>
     </table>
+
+    
 </div>
 
 <%@ include file="../common/footer.jsp" %>
