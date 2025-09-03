@@ -157,7 +157,10 @@ public class BoardController {
 		int bnum = Integer.parseInt(request.getParameter("bnum"));
 		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
 		boardDao.boardDelete(bnum);
-		return "redirect:/board/boardList";
+		model.addAttribute("msg", "글이 삭제 되었습니다.");
+		model.addAttribute("url", request.getContextPath() + "/board/boardList");
+		return "alert";
+		//return "redirect:/board/boardList";
 	}
 	
 }
