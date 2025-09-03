@@ -14,9 +14,17 @@
         	<select name="searchType">
         		<option value="title">제목</option>
         		<option value="content">내용</option>
-        		<option value="writer">작성자</option>
+        		<option value="name">작성자</option>
         	</select>
-            <input type="text" name="keyword" placeholder="검색어 입력" required>
+        	<c:choose>
+        		<c:when test="${not empty keyword }">
+        			<input type="text" name="keyword" value="${keyword }" required>
+        		</c:when>
+        		<c:otherwise>
+        			<input type="text" name="keyword" placeholder="검색어 입력" required>
+        		</c:otherwise>
+        	</c:choose>
+            
             <button type="submit" class="btn">검색</button>
         </form>
     </div>    
@@ -32,8 +40,8 @@
         
 		<c:forEach items="${boardDtos }" var="boardDto">
 			<tr>
-	            <td>${boardDto.bnum }</td>
-	            <td><a href="boardDetail?bnum=${boardDto.bnum }">${boardDto.title }</a></td>
+	            <td>${totalCount - boardDto.rnum + 1 }</td>
+	            <td><a href="boardDetail?bnum=${boardDto.bnum }&searchType=${searchType }&keyword=${keyword }">${boardDto.title }</a></td>
 	            <td>${boardDto.memberDto.name }</td>
 	            <td>${boardDto.hit }</td>
 	            <td>
@@ -47,8 +55,8 @@
     <!-- 페이징 -->
     <div class="pagination">
     	<c:if test="${pageNum > 1 }">
-	    	<a href="boardList?pageNum=1">&laquo;</a>
-	    	<a href="boardList?pageNum=${pageNum - 1 }">&lsaquo;</a>
+	    	<a href="boardList?pageNum=1&searchType=${searchType }&keyword=${keyword }">&laquo;</a>
+	    	<a href="boardList?pageNum=${pageNum - 1 }&searchType=${searchType }&keyword=${keyword }">&lsaquo;</a>
     	</c:if>
     	<c:forEach begin="${startPage }" end="${endPage }" var="p">
     		<c:choose>
@@ -56,13 +64,13 @@
     				<a href="">${p }</a>
     			</c:when>
     			<c:otherwise>
-    				<a href="boardList?pageNum=${p }">${p }</a>
+    				<a href="boardList?pageNum=${p }&searchType=${searchType }&keyword=${keyword }">${p }</a>
     			</c:otherwise>
     		</c:choose>
     	</c:forEach>
 		<c:if test="${pageNum < totalPage }">
-	        <a href="boardList?pageNum=${pageNum + 1 }">&rsaquo;</a>
-	        <a href="boardList?pageNum=${totalPage }">&raquo;</a>
+	        <a href="boardList?pageNum=${pageNum + 1 }&searchType=${searchType }&keyword=${keyword }">&rsaquo;</a>
+	        <a href="boardList?pageNum=${totalPage }&searchType=${searchType }&keyword=${keyword }">&raquo;</a>
         </c:if>
     </div>    
     
