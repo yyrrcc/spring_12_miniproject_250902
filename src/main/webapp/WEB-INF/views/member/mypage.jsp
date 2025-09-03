@@ -14,7 +14,7 @@
         
         <div class="form-group">
             <label for="password">비밀번호</label>
-            <input type="password" id="pw" name="password" placeholder="변경 할 비밀번호 입력">
+            <input type="password" id="pw" name="password" placeholder="변경 할 비밀번호 입력" required>
         </div>
         
         <div class="form-group">
@@ -39,7 +39,7 @@
         
         <div class="button-group">
             <button type="submit" class="btn-primary">수정하기</button>
-            <button type="button" class="btn-secondary" onclick="location.href='/mini/index'">취소</button>
+            <button type="button" class="btn-secondary" onclick="location.href='${pageContext.request.contextPath}/index'">취소</button>
         </div>
     </form>
     	

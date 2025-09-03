@@ -11,8 +11,26 @@
 	</insert>
 	
 	<!-- 모든 예약 목록 -->
-	<select id="resList" resultType="com.mycompany.mini.dto.ReservationDto">
-		SELECT * FROM minireservation
+	<resultMap type="com.mycompany.mini.dto.ReservationDto" id="resWithMember">
+		<id property="resId" column="resId"/>
+		<result property="memberId" column="memberId"/>
+		<result property="resDate" column="resDate"/>
+		<result property="resTime" column="resTime"/>
+		<result property="persons" column="persons"/>
+		<result property="Timestamp" column="regDate"/>
+			<association property="memberDto" javaType="com.mycompany.mini.dto.MemberDto">
+				<id property="memberId" column="memberId"/>
+				<result property="password" column="password"/>
+				<result property="name" column="name"/>
+				<result property="phone" column="phone"/>
+				<result property="email" column="email"/>
+				<result property="regDate" column="regDate"/>			
+			</association>
+	</resultMap>
+	<select id="resList" resultMap="resWithMember">
+		SELECT res.resid, res.memberid, m.name, res.resdate, res.restime, res.persons FROM minireservation res
+		INNER JOIN minimember m
+		ON res.memberid = m.memberid
 	</select>
 
 </mapper>

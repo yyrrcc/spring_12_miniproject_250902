@@ -15,6 +15,11 @@
 		SELECT count(*) FROM minimember WHERE memberid = #{param1} AND password = #{param2}
 	</select>
 	
+	<!-- 로그인 후 회원이름 가져오기 -->
+	<select id="memGetName" resultType="String">
+		SELECT name FROM minimember WHERE memberid = #{param1}
+	</select>
+	
 	<!-- 마이페이지 정보 확인 -->
 	<select id="mypage" resultType="com.mycompany.mini.dto.MemberDto">
 		SELECT * FROM minimember WHERE memberid = #{param1}

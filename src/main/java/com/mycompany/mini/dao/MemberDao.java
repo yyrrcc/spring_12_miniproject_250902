@@ -8,6 +8,8 @@ public interface MemberDao {
 	public void memSignUp(MemberDto memberDto);
 	// 로그인
 	public int memLogin(String memberId, String password);
+	// 로그인 후 회원 이름 가져오기
+	public String memGetName(String memberId);
 	// 마이페이지 정보 확인
 	public MemberDto mypage(String memberId);
 	// 마이페이지 정보 수정

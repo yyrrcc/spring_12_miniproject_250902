@@ -18,6 +18,8 @@ public class ReservationDto {
 	private int persons;         // 인원 수
 	private Timestamp regDate;    // 예약 등록일
 	
+	private MemberDto memberDto; // MemberDto를 멤버변수로 지정
+	
 	public ReservationDto(String memberId, String resDate, String resTime, int persons) {
 		super();
 		this.memberId = memberId;

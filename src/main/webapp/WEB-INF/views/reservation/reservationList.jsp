@@ -17,7 +17,7 @@
         <c:forEach var="r" items="${resDtos}">
             <tr>
                 <td>${r.resId}</td>
-                <td>${r.memberId}</td>
+                <td>${r.memberDto.name}</td>
                 <td>${r.resDate}</td>
                 <td>${r.resTime}</td>
                 <td>${r.persons}</td>

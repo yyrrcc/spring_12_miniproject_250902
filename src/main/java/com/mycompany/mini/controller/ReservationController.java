@@ -33,7 +33,13 @@ public class ReservationController {
 	}
 	// 예약하기 폼
 	@RequestMapping (value = "/reservation/reservationForm")
-	public String reservationForm(HttpServletRequest request, Model model) {
+	public String reservationForm(HttpServletRequest request, Model model, HttpSession session) {
+		String sid = (String) session.getAttribute("sessionId");
+		if (sid == null) {
+			model.addAttribute("msg", "로그인 하셔야 예약을 하실 수 있습니다.");
+			model.addAttribute("url", request.getContextPath() + "/member/login");
+			return "alert";
+		}
 		return "reservation/reservationForm";
 	}
 	

@@ -60,14 +60,9 @@
 	        <a href="boardList?pageNum=${totalPage }">&raquo;</a>
         </c:if>
     </div>    
-
     
     <a href="${pageContext.request.contextPath}/board/boardWrite" class="btn">글쓰기</a>
-    
-    
-    <c:if test="${not empty sessionScope.sid}">
-        <a href="${pageContext.request.contextPath}/board/boardWrite" class="btn">글쓰기</a>
-    </c:if>
+
 </div>
 
 <%@ include file="../common/footer.jsp" %>
