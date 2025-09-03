@@ -19,6 +19,57 @@ public class BoardController {
 	@Autowired
 	SqlSession sqlSession;
 
+	// 게시판 모든 글 목록 + 페이징 + 검색 기능 추가 .. 포기
+//	@RequestMapping (value = "/board/boardList")
+//	public String boardlist(HttpServletRequest request, Model model) {
+//		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
+//		
+//		String searchType = request.getParameter("searchType");
+//    	String keyword = request.getParameter("keyword");
+//    	
+//		int totalCount; //총 글 수
+//		int pageNum = 1; //현재 페이지
+//		int pageSize = 10; // 1페이지 당 보여지는 글 개수
+//		int blockSize = 5; // 페이지 블럭에 표시 될 페이지의 수
+//		if (request.getParameter("pageNum") != null) {
+//			pageNum = Integer.parseInt(request.getParameter("pageNum"));
+//		}	
+//		
+//		// 게시글 검색한 경우
+//    	if (searchType != null && keyword != null && !keyword.strip().isEmpty()) {
+//    		totalCount = boardDao.boardCount2(searchType, keyword);
+//    	} else { // 모든 게시판 글 목록
+//    		totalCount = boardDao.boardCount();
+//    	}
+//		
+//		int totalPage = (int) Math.ceil((double)totalCount / pageSize); // 총 페이지 수
+//		int startPage = (((pageNum - 1) / blockSize) * blockSize) + 1;
+//		int endPage = startPage + blockSize - 1;
+//		if (endPage > totalPage) {
+//			endPage = totalPage;
+//		}
+//		int startRow = (pageNum - 1) * pageSize + 1;
+//		int endRow = pageNum * pageSize;
+//    	
+//		
+//    	List<BoardDto> boardDtos = null;
+//		// 게시글 검색한 경우
+//    	if (searchType != null && keyword != null && !keyword.strip().isEmpty()) {
+//    		boardDtos = boardDao.boardList2(startRow, endRow, searchType, keyword);
+//    	} else { // 모든 게시판 글 목록
+//    		boardDtos = boardDao.boardList(startRow, endRow);
+//    	}
+//		model.addAttribute("boardDtos", boardDtos);
+//		model.addAttribute("pageNum", pageNum);
+//		model.addAttribute("totalCount", totalCount);
+//		model.addAttribute("totalPage", totalPage);
+//		model.addAttribute("startPage", startPage);
+//		model.addAttribute("endPage", endPage);
+//		
+//		model.addAttribute("searchType", searchType);
+//	    model.addAttribute("keyword", keyword);
+//		return "board/boardList";
+//	}
 	
 	// 게시판 모든 글 목록 + 페이징
 	@RequestMapping (value = "/board/boardList")
@@ -37,10 +88,10 @@ public class BoardController {
 		if (endPage > totalPage) {
 			endPage = totalPage;
 		}
-		int StartRow = (pageNum - 1) * pageSize + 1;
+		int startRow = (pageNum - 1) * pageSize + 1;
 		int endRow = pageNum * pageSize;
 
-		List<BoardDto> boardDtos = boardDao.boardList(StartRow, endRow);
+		List<BoardDto> boardDtos = boardDao.boardList(startRow, endRow);
 		model.addAttribute("boardDtos", boardDtos);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("totalCount", totalCount);

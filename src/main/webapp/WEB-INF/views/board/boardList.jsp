@@ -11,7 +11,12 @@
     <!-- 검색창 -->
     <div class="search-box">
         <form action="boardList" method="get">
-            <input type="text" name="keyword" placeholder="검색어 입력">
+        	<select name="searchType">
+        		<option value="title">제목</option>
+        		<option value="content">내용</option>
+        		<option value="writer">작성자</option>
+        	</select>
+            <input type="text" name="keyword" placeholder="검색어 입력" required>
             <button type="submit" class="btn">검색</button>
         </form>
     </div>    

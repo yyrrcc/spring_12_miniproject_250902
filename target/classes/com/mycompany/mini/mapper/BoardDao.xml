@@ -15,6 +15,34 @@
 		SELECT count(*) FROM miniboard
 	</select>	
 	
+	<!-- 모든 글 목록 + 페이징 + 검색 
+	<select id="boardList" resultMap="boardWithMember">
+		<![CDATA[
+		SELECT * FROM (
+			SELECT ROWNUM AS rnum, r.* FROM (
+				SELECT b.bnum, b.title, b.content, b.memberid, m.name, b.hit, b.regdate FROM miniboard b
+				INNER JOIN minimember m ON b.memberid = m.memberid
+				ORDER BY b.bnum DESC) r
+			WHERE ROWNUM <= #{endRow})
+		WHERE rnum >= #{startRow}
+		]]>
+	</select>
+	<select id="boardList2" resultMap="boardWithMember">
+		<![CDATA[
+		SELECT * FROM (
+			SELECT ROWNUM AS rnum, r.* FROM (
+				SELECT b.bnum, b.title, b.content, b.memberid, m.name, b.hit, b.regdate FROM miniboard b
+				INNER JOIN minimember m ON b.memberid = m.memberid
+				ORDER BY b.bnum DESC) r
+			WHERE ROWNUM <= #{endRow})
+		WHERE rnum >= #{startRow} AND #{searchType} LIKE '%' || #{keyword} || '%'
+		]]>
+	</select> -->
+	<!-- 검색 전용 글 개수 
+	<select id="boardCount2" resultType="int">
+		SELECT count(*) FROM miniboard WHERE #{searchType} LIKE '%' || #{keyword} || '%'
+	</select> -->
+	
 	<!-- 모든 글 목록 + 페이징 -->
 	<resultMap type="com.mycompany.mini.dto.BoardDto" id="boardWithMember">
 		<id property="bnum" column="bnum"/>
@@ -23,7 +51,7 @@
 		<result property="content" column="content"/>
 		<result property="hit" column="hit"/>
 		<result property="regDate" column="regDate"/>
-		<result property="rnum" column="rnum"/> <!-- 이걸 까먹으면 안 된다 -->
+		<result property="rnum" column="rnum"/>
 			<association property="memberDto" javaType="com.mycompany.mini.dto.MemberDto">
 				<id property="memberId" column="memberId"/>
 				<result property="password" column="password"/>
@@ -32,7 +60,7 @@
 				<result property="email" column="email"/>
 				<result property="regDate" column="regDate"/>
 			</association>
-	</resultMap>
+	</resultMap>	
 	<select id="boardList" resultMap="boardWithMember">
 		<![CDATA[
 		SELECT * FROM (
@@ -43,7 +71,7 @@
 			WHERE ROWNUM <= #{param2})
 		WHERE rnum >= #{param1}
 		]]>
-	</select>
+	</select> 
 	
 	<!-- 글 세부사항 -->
 	<select id="boardDetail" resultType="com.mycompany.mini.dto.BoardDto">
@@ -63,6 +91,6 @@
 	<!-- 글 삭제하기 -->
 	<delete id="boardDelete">
 		DELETE FROM miniboard WHERE bnum = #{param1}
-	</delete>	
+	</delete>
 
 </mapper>
