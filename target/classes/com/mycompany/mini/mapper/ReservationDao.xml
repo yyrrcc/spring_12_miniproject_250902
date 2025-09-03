@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycompany.mini.dao.ReservationDao">
+
+	<!-- 예약하기 -->
+	<insert id="resWrite">
+		INSERT INTO minireservation (resid, memberid, resdate, restime, persons) VALUES (MINIRES_SEQ.nextval, #{memberId}, #{resDate}, #{resTime}, #{persons})
+	</insert>
+	
+	<!-- 모든 예약 목록 -->
+	<select id="resList" resultType="com.mycompany.mini.dto.ReservationDto">
+		SELECT * FROM minireservation
+	</select>
+
+</mapper>

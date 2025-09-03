@@ -29,3 +29,31 @@
     border: 1px solid #ddd;
 }
 
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+}
+
+.btn-primary {
+    background: #6c63ff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #5848d4;
+}
+
+.btn-secondary {
+    background: #ddd;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background: #bbb;
+}

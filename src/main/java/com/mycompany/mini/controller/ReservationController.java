@@ -1,5 +1,8 @@
 package com.mycompany.mini.controller;
 
+import java.sql.Date;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,8 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.mycompany.mini.dao.BoardDao;
 import com.mycompany.mini.dao.MemberDao;
+import com.mycompany.mini.dao.ReservationDao;
 import com.mycompany.mini.dto.MemberDto;
+import com.mycompany.mini.dto.ReservationDto;
 
 @Controller
 public class ReservationController {
@@ -20,13 +26,29 @@ public class ReservationController {
 	// 예약 목록
 	@RequestMapping (value = "/reservation/reservationList")
 	public String reservationList(HttpServletRequest request, Model model) {
+		ReservationDao resDao = sqlSession.getMapper(ReservationDao.class);
+		List<ReservationDto> resDtos = resDao.resList();
+		model.addAttribute("resDtos", resDtos);
 		return "reservation/reservationList";
 	}
 	// 예약하기 폼
 	@RequestMapping (value = "/reservation/reservationForm")
 	public String reservationForm(HttpServletRequest request, Model model) {
 		return "reservation/reservationForm";
-	}	
+	}
+	
+	// 예약하기
+	@RequestMapping (value = "/reservation/resSuccess")
+	public String resSuccess(HttpServletRequest request, Model model) {
+		String memberId = request.getParameter("memberId");
+		String resDate = request.getParameter("resDate");
+		String resTime = request.getParameter("resTime");
+		int persons = Integer.parseInt(request.getParameter("persons"));
+		ReservationDao resDao = sqlSession.getMapper(ReservationDao.class);
+		ReservationDto resDto = new ReservationDto(memberId, resDate, resTime, persons);
+		resDao.resWrite(resDto);
+		return "redirect:/reservation/reservationList";
+	}
 
 
 }
