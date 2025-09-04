@@ -14,7 +14,6 @@
         	<select name="searchType">
         		<option value="title">제목</option>
         		<option value="content">내용</option>
-        		<option value="name">작성자</option>
         	</select>
         	<c:choose>
         		<c:when test="${not empty keyword }">
@@ -61,7 +60,7 @@
     	<c:forEach begin="${startPage }" end="${endPage }" var="p">
     		<c:choose>
     			<c:when test="${p == pageNum }">
-    				<a href="">${p }</a>
+    				<a href="" class="on">${p }</a>
     			</c:when>
     			<c:otherwise>
     				<a href="boardList?pageNum=${p }&searchType=${searchType }&keyword=${keyword }">${p }</a>

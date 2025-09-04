@@ -194,14 +194,14 @@ tr:hover {
 }
 
 .pagination a:hover {
-    background: #4CAF50;
+    background: #ae6c6f;
     color: white;
 }
 
-.pagination a:active {
-    background: #4CAF50;
+.pagination .on {
+    background: #ae6c6f;
     color: white;
-    border: 1px solid #4CAF50;
+    border: 1px solid #ae6c6f;
 }
 
 
