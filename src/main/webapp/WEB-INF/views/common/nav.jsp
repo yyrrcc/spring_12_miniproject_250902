@@ -12,7 +12,14 @@
         	<c:otherwise>
 				<li><a href="${pageContext.request.contextPath}/member/mypage">${sessionScope.sessionName }님의 마이페이지</a></li>        	
 				<li><a href="${pageContext.request.contextPath}/signout">로그아웃</a></li>
-				<li><a href="${pageContext.request.contextPath}/reservation/reservationList">나의예약</a></li>
+				<c:choose>
+					<c:when test="${sessionScope.sessionId == 'admin' }">
+						<li><a href="${pageContext.request.contextPath}/reservation/reservationList">모든예약</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="${pageContext.request.contextPath}/reservation/reservationList">나의예약</a></li>
+					</c:otherwise>
+				</c:choose>
         	</c:otherwise>
         </c:choose>
         <li><a href="${pageContext.request.contextPath}/board/boardList">자유게시판</a></li>
