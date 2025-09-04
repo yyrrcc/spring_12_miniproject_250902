@@ -14,7 +14,7 @@
         
         <div class="button-group">
 	        <button type="submit" class="btn btn-primary">예약 등록</button>
-	        <button type="button" class="btn btn-secondary" onclick="location.href='${pageContext.request.contextPath}/index'">취소</button>
+	        <button type="button" class="btn btn-secondary" onclick="location.href='${pageContext.request.contextPath}/reservation/reservationList'">취소</button>
         </div>
     </form>
 </div>

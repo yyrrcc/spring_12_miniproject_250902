@@ -24,15 +24,19 @@
         	<th>인원수</th>
        	</tr>
         
-        <c:forEach var="r" items="${resDtos}">
-            <tr>
-                <td>${r.resId}</td>
-                <td>${r.memberDto.name}</td>
-                <td>${r.resDate}</td>
-                <td>${r.resTime}</td>
-                <td>${r.persons}</td>
-            </tr>
-        </c:forEach>
+        
+       	<c:forEach var="r" items="${resDtos}">
+       		<c:if test="${sessionScope.sessionId == r.memberId || sessionScope.sessionId == 'admin'}">
+		            <tr>
+		                <td>${r.resId}</td>
+		                <td>${r.memberDto.name}</td>
+		                <td>${r.resDate}</td>
+		                <td>${r.resTime}</td>
+		                <td>${r.persons}</td>
+		            </tr>
+        	</c:if>
+       	</c:forEach>
+
     </table>
 
     
