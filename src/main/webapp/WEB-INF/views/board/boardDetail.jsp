@@ -36,7 +36,7 @@
 
     <div class="detail-btns">
         <a href="boardList" class="btn">글목록</a>
-        <c:if test="${sessionScope.sessionId == boardDto.memberId}">
+        <c:if test="${sessionScope.sessionId == boardDto.memberId || sessionScope.sessionId == 'admin'}">
             <a href="boardEdit?bnum=${boardDto.bnum}" class="btn">수정</a>
             <a href="boardDelete?bnum=${boardDto.bnum}" class="btn cancel">삭제</a>
         </c:if>
