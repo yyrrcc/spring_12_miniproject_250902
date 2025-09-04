@@ -207,6 +207,7 @@ tr:hover {
 
 /* 댓글 영역 */
 .comment-section {
+	width: 570px;
     margin-top: 40px;
     padding: 20px;
     background: #fafafa;
@@ -226,7 +227,7 @@ tr:hover {
 
 .comment-form input, 
 .comment-form textarea {
-    width: 100%;
+    width: 95%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
